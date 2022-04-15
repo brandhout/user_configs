@@ -15,6 +15,9 @@
  (use-service-modules xorg)
  (use-service-modules virtualization)
  (use-service-modules docker)
+;(use-package-modules wm)
+ ; voor xscreensaver
+ (use-package-modules xdisorg)
 
 
  (define %user-name "rhuijzer")
@@ -44,6 +47,7 @@
             (specification->package "vim")
             (specification->package "brandhout-dwm")
             (specification->package "brandhout-st")
+            (specification->package "xscreensaver")
             (specification->package "rofi")
             (specification->package "font-fira-code")
             (specification->package "font-fira-mono")))
@@ -67,11 +71,15 @@
  		(slim-configuration
                 		(display ":0")
                  		(vt "vt7")
- 					(xorg-configuration (xorg-configuration(keyboard-layout(
+ 					(xorg-configuration 
+					  (xorg-configuration
+					    (keyboard-layout(
 						keyboard-layout"us" "altgr-intl"
-						#:options '("caps:swapescape")))))))
+						#:options '("caps:swapescape")))
+					    ))))
          	(service openssh-service-type)
  		(service docker-service-type)
+		(screen-locker-service xscreensaver)
  		(service libvirt-service-type
            		(libvirt-configuration
           			(unix-sock-group "libvirt")
@@ -124,6 +132,8 @@
 ;         	(modify-services %desktop-services
 ;                 	(delete gdm-service-type))))
   (services %xorg-slim-services)
+
+
 
    (bootloader
      (bootloader-configuration
