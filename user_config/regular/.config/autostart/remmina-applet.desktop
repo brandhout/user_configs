@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Remmina applet
+Comment=Verbinding met extern bureaublad maken via het applet menu
+Icon=org.remmina.Remmina
+Exec=remmina -i
+Terminal=false
+Type=Application
+Hidden=true
