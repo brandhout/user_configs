@@ -1,6 +1,7 @@
 (define-module (test-system)
   #:use-module (base-system)
-  #:use-module (gnu))
+  #:use-module (gnu)
+  #:use-module (gnu packages xorg))
 
 (operating-system
  (inherit base-operating-system)
@@ -17,6 +18,9 @@
     (bootloader grub-bootloader)
     (target "/dev/sda")
     (keyboard-layout keyboard-layout)))
+
+  (packages 
+   (append (list xbacklight)))
 
   (file-systems
     (cons* (file-system
