@@ -136,20 +136,36 @@
 ;                 	(delete gdm-service-type))))
   (services %xorg-slim-services)
 
+  (bootloader (bootloader-configuration
+    (bootloader grub-efi-bootloader)
+      (target "/boot/efi")
+      (keyboard-layout keyboard-layout)))
 
+;   (bootloader
+;     (bootloader-configuration
+;       (bootloader grub-bootloader)
+;       (target "/dev/vda")
+;       (keyboard-layout keyboard-layout)))
 
-   (bootloader
-     (bootloader-configuration
-       (bootloader grub-bootloader)
-       (target "/dev/vda")
-       (keyboard-layout keyboard-layout)))
-;   (swap-devices
-;     (list (uuid "ebcc3ad2-0fff-439a-9bf3-75460a5cc4ab")))
-   (file-systems
-     (cons* (file-system
-              (mount-point "/")
-              (device
-                (uuid "b0804161-b83b-4265-bb79-584d7eba83dc"
-                      'ext4))
-              (type "ext4"))
-            %base-file-systems))))
+   (swap-devices
+     (list (uuid "ebcc3ad2-0fff-439a-9bf3-75460a5cc4ab")))
+;   (file-systems
+;     (cons* (file-system
+;              (mount-point "/")
+;              (device
+;                (uuid "b0804161-b83b-4265-bb79-584d7eba83dc"
+;                      'ext4))
+;              (type "ext4"))
+;            %base-file-systems))))
+
+; TODO: Aparte subvol voor home vanwege snapshotting
+; TODO: EFI mountpoint /boot/efi 
+  (file-systems
+    (cons* (file-system
+             (mount-point "/")
+             (device
+               (uuid "961f760e-08a7-49e1-8f11-476b317c855e"
+                     'btrfs))
+             (type "btrfs")
+             (options "subvol=@rootfs"))
+           %base-file-systems))))
