@@ -143,8 +143,8 @@
        (bootloader grub-bootloader)
        (target "/dev/vda")
        (keyboard-layout keyboard-layout)))
-   (swap-devices
-     (list (uuid "ebcc3ad2-0fff-439a-9bf3-75460a5cc4ab")))
+;   (swap-devices
+;     (list (uuid "ebcc3ad2-0fff-439a-9bf3-75460a5cc4ab")))
    (file-systems
      (cons* (file-system
               (mount-point "/")
