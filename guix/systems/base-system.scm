@@ -71,7 +71,7 @@
 ;       #:options '("caps:swapescape"))
 
 ; TODO opsplitsen in base and xorg (slim)
- (define %xorg-slim-services
+ (define-public %xorg-slim-services
   (cons* (service slim-service-type  
  		(slim-configuration
                 		(display ":0")
