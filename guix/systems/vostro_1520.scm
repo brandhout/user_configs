@@ -22,8 +22,9 @@
   (packages 
    (append (list xbacklight)))
 
-  (services (modify-services %xorg-slim-services
-    (delete zram-device-service-type)))
+; Doesn't work; maybe this module needs the linux service module as well
+;  (services (modify-services %xorg-slim-services
+;    (delete zram-device-service-type)))
 
   (file-systems
     (cons* (file-system
