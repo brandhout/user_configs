@@ -69,6 +69,7 @@
 ;       "us" "altgr-intl"
 ;       #:options '("caps:swapescape"))
 
+; TODO opsplitsen in base and xorg (slim)
  (define %xorg-slim-services
   (cons* (service slim-service-type  
  		(slim-configuration
@@ -82,6 +83,8 @@
 					    ))))
          	(service openssh-service-type)
  		(service docker-service-type)
+    (service earlyoom-service-type)    
+    (service zram-device-service-type)
 		(screen-locker-service xscreensaver)
  		(service libvirt-service-type
            		(libvirt-configuration
@@ -159,6 +162,7 @@
 ;            %base-file-systems))))
 
 ; TODO: Aparte subvol voor home vanwege snapshotting
+; Home kan ook op aparte subvol en root gewoon op toplevel
 ; TODO: EFI mountpoint /boot/efi 
   (file-systems
     (cons* (file-system
@@ -167,5 +171,5 @@
                (uuid "961f760e-08a7-49e1-8f11-476b317c855e"
                      'btrfs))
              (type "btrfs")
-             (options "subvol=@rootfs"))
+             (options "subvol=@rootfs,compress=zstd:1"))
            %base-file-systems))))

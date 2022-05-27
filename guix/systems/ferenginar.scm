@@ -27,6 +27,7 @@
                (uuid "b8602260-f98e-4f1d-980c-9c1b68a34908"
                      'btrfs))
              (type "btrfs"))
+             (options "compress=zstd:1"))
            (file-system
              (mount-point "/boot/efi")
              (device (uuid "9278-5501" 'fat32))
