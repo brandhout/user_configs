@@ -3,6 +3,8 @@
   #:use-module (gnu)
   #:use-module (gnu packages xorg))
 
+(use-service-modules linux)
+
 (operating-system
  (inherit base-operating-system)
  (host-name "vostro")
@@ -23,8 +25,8 @@
    (append (list xbacklight)))
 
 ; Doesn't work; maybe this module needs the linux service module as well
-;  (services (modify-services %xorg-slim-services
-;    (delete zram-device-service-type)))
+  (services (modify-services %xorg-slim-services
+    (delete zram-device-service-type)))
 
   (file-systems
     (cons* (file-system
