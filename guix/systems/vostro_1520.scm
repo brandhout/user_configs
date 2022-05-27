@@ -22,6 +22,9 @@
   (packages 
    (append (list xbacklight)))
 
+  (services (modify-services %xorg-slim-services
+    (delete zram-device-service-type)))
+
   (file-systems
     (cons* (file-system
              (mount-point "/")
