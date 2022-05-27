@@ -15,6 +15,7 @@
  (use-service-modules xorg)
  (use-service-modules virtualization)
  (use-service-modules docker)
+ (use-service-modules linux)
 ;(use-package-modules wm)
  ; voor xscreensaver
  (use-package-modules xdisorg)
