@@ -24,12 +24,12 @@
     (cons* (file-system
              (mount-point "/")
              (device
-               (uuid "b8602260-f98e-4f1d-980c-9c1b68a34908"
+               (uuid "40be9e16-d03b-47d4-a897-1e57d76ad883"
                      'btrfs))
-             (type "btrfs"))
+             (type "btrfs")
              (options "compress=zstd:1"))
            (file-system
              (mount-point "/boot/efi")
-             (device (uuid "9278-5501" 'fat32))
+             (device (uuid "7FD1-81C6" 'fat32))
              (type "vfat"))
            %base-file-systems)))
