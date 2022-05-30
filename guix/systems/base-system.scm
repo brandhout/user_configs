@@ -59,6 +59,8 @@
 (define %brandhout-base-packages
   (append
     (list (specification->package "nss-certs")
+          (specification->package "nfs-utils")
+          (specification->package "libnfs")
           (specification->package "qemu"))
     %base-packages))
 

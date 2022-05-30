@@ -1,11 +1,11 @@
-(define-module (ferenginar-system)
+(define-module (vulcan-system)
   #:use-module (base-system)
   #:use-module (gnu)
   #:use-module (gnu packages xorg))
 
 (operating-system
  (inherit base-operating-system)
- (host-name "ferenginar")
+ (host-name "vulcan")
  (keyboard-layout
      (keyboard-layout
        "us" "altgr-intl"
