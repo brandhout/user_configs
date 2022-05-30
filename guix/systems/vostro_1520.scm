@@ -21,8 +21,8 @@
     (target "/dev/sda")
     (keyboard-layout keyboard-layout)))
 
-  (packages 
-   (append (list xbacklight)))
+;  (packages 
+;   (append (list xbacklight)))
 
 ; Doesn't work; maybe this module needs the linux service module as well
   (services (modify-services %xorg-slim-services
