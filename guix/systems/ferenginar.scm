@@ -3,6 +3,8 @@
   #:use-module (gnu)
   #:use-module (gnu packages xorg))
 
+(use-service-modules linux)
+
 (operating-system
  (inherit base-operating-system)
  (host-name "ferenginar")
@@ -17,8 +19,15 @@
     (targets (list "/boot/efi"))
     (keyboard-layout keyboard-layout)))
 
-  (packages 
-   (append (list xbacklight)))
+;  (packages 
+;   (append (list xbacklight)))
+
+;  (services
+;    (append (list (service wpa-supplicant-service-type)) %xorg-slim-services))
+
+  (services (modify-services %xorg-slim-services
+    (delete zram-device-service-type)))
+
 
   (file-systems
     (cons* (file-system
