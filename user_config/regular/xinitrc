@@ -1,0 +1,8 @@
+setxkbmap -option caps:swapescape &
+feh --bg-scale ~/Afbeeldingen/Wallpapers &
+while true; do
+   xsetroot -name "$( date +"%H:%M %d-%m-%Y" )"
+   sleep 1m    # Update time every minute
+done &
+export $(dbus-launch) &
+exec dwm
