@@ -3,6 +3,8 @@
   #:use-module (gnu)
   #:use-module (gnu packages xorg))
 
+(use-service-modules nfs)
+
 (operating-system
  (inherit base-operating-system)
  (host-name "vulcan")
@@ -10,6 +12,8 @@
      (keyboard-layout
        "us" "altgr-intl"
        #:options '("caps:swapescape")))
+
+ (services (append (list(service nfs-service-type (nfs-configuration))) %xorg-slim-services))
 
   (bootloader
    (bootloader-configuration
@@ -29,4 +33,12 @@
              (mount-point "/boot/efi")
              (device (uuid "2DB9-5A8F" 'fat32))
              (type "vfat"))
+	   (file-system
+	     (mount-point "/media/Olympus")
+	     (device "172.16.0.2:volume1/Olympus" )
+	     (type "nfs")
+	     (mount? #f)
+	     (needed-for-boot? #f)
+	     (create-mount-point? #t)
+             (options "rw,_netdev,noauto,user,lazytime,exec,tcp"))
            %base-file-systems)))
