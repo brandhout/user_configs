@@ -5,9 +5,11 @@
  #:use-module (gnu packages suckless)
  #:use-module (gnu packages xorg)
  #:use-module (gnu packages vim)
+ #:use-module (gnu packages shells)
  #:use-module (nongnu packages linux)
  #:use-module (nongnu system linux-initrd)
- #:use-module (brandhout packages))
+ #:use-module (brandhout packages brandhout-dwm)
+ #:use-module (brandhout packages brandhout-st))
 
  (use-service-modules desktop xorg)
  (use-service-modules networking)
@@ -19,6 +21,7 @@
 ;(use-package-modules wm)
  ; voor xscreensaver
  (use-package-modules xdisorg)
+
 
 
  (define %user-name "rhuijzer")
@@ -64,7 +67,7 @@
           (specification->package "qemu"))
     %base-packages))
 
- (define %xorg-packages (append %xorg-dwm-packages %brandhout-base-packages))
+ (define-public %xorg-packages (append %xorg-dwm-packages %brandhout-base-packages))
  ;(define %wayland-packages %brandhout-base-packages)
  ; okee in de override klasse (dus inherit operating system) kan je dus een package set kiezen dmv deze variabelen
 
@@ -115,6 +118,7 @@
                    (name %user-name)
                    (comment %full-name)
                    (group "users")
+                   (shell (file-append zsh "/bin/zsh"))
                    ;(home-directory "/home/rhuijzer")
                    (home-directory (string-append "/home/" %user-name))
                    (supplementary-groups
